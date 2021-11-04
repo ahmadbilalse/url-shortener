@@ -11,6 +11,19 @@ a.unavailable {
   pointer-events: none;
 }
 
+@mixin button {
+  border: none;
+  background-color: var(--primary-color);
+  border-radius: $border-radius;
+  color: var(--on-primary-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.button:hover {
+  filter: brightness(120%);
+}
+
 .link::after {
   content: '\2197';
   margin-left: 0.5rem;
