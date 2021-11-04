@@ -1,0 +1,30 @@
+@use '../../styles/utils';
+
+.container {
+  padding: 2rem;
+  background-color: var(--surface-color);
+  margin: 2rem 0;
+  border-radius: utils.$border-radius;
+  font-size: 1.5rem;
+  color: var(--font-secondary-color);
+  display: flex;
+  align-items: center;
+}
+
+.result {
+  flex-grow: 1;
+}
+
+.button {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: utils.$border-radius;
+  color: var(--font-primary-color);;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.button__copied {
+  background-color: var(--font-primary-color);
+  color: var(--background-color);
+}
