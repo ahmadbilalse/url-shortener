@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Github User Search</title>
+        <title>URL Shortener</title>
         <meta name="description" content="Github user search" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
