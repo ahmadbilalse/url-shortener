@@ -9,6 +9,11 @@
   align-items: center;
   border-radius: utils.$border-radius;
   position: relative;
+  font-size: 1.5rem;
+}
+
+.form__error {
+  border: 2px solid red;
 }
 
 .icon {
@@ -31,6 +36,12 @@
 
 .input::placeholder {
   color: var(--font-secondary-color);
+}
+
+.error {
+  color: var(--error-color);
+  margin: 1rem;
+  font-size: 1.4rem;
 }
 
 .clearButton {

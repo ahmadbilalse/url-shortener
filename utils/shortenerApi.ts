@@ -1,10 +1,26 @@
 import { ResultLink } from './../state/store';
 import { useState } from "react";
 import useStore from "../state/store";
+import { ValidationError } from './error';
+
+const NO_URL_SPECIFIED = 1;
+const INVALID_URL = 2;
 
 export const shorten = async (url: string) => {
-  const query = `https://api.shrtco.de/v2/shorten?url=${url}`
-  const result = await (await fetch(query)).json();
+  const query = `https://api.shrtco.de/v2/shorten?url=${url}`;
+  const result = await fetch(query).then((response) => {
+    return response.json();
+  }).then(data => {
+    if (data.ok) {
+      return data;
+    } else {
+      if (data.error_code === NO_URL_SPECIFIED || data.error_code === INVALID_URL) {
+        return new ValidationError('Invalid URL');
+      } else {
+        return new Error('Something went wrong');
+      }
+    }
+  });
   return result;
 }
 
@@ -17,19 +33,22 @@ export const useLazyShorten = (): [Function, { data: any, loading: boolean, erro
   const execute = (input: string) => {
     setLoading(true);
     shorten(input).then((val) => {
-      const result: ResultLink = {
-        originalLink: val.result.original_link,
-        shortLink: val.result.short_link,
-        fullShortLink: val.result.full_short_link,
-      }
-      gSetResult(result);
-    }).catch((e) => {
-      if (typeof e === "string") {
-        setError(new Error(e));
-      } else if (e instanceof Error) {
-        setError(e);
+      if (val instanceof Error) {
+        throw val;
       } else {
-        setError(new Error('Something went wrong'));
+        const result: ResultLink = {
+          originalLink: val.result.original_link,
+          shortLink: val.result.short_link,
+          fullShortLink: val.result.full_short_link,
+        }
+        setError(undefined);
+        gSetResult(result);
+      }
+    }).catch((e) => {
+      if (e instanceof TypeError) {
+        setError(new Error('Something went wrong, please check your internet connection'));
+      } else {
+        setError(e);
       }
     }).finally(() => {
       setLoading(false);

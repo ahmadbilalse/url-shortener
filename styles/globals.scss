@@ -8,7 +8,8 @@
   --font-secondary-color: #CCD6EF;
   --background-color: #141C2F;
   --surface-color: #1F2A48;
-  --on-primary-color: #FFF,
+  --on-primary-color: #FFF;
+  --error-color: #fe3b00;
 }
 
 html {
@@ -23,4 +24,5 @@ a {
 
 * {
   box-sizing: border-box;
+  line-height: 1.5;
 }
