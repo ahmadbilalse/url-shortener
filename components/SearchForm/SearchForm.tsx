@@ -27,6 +27,7 @@ export default function SearchForm() {
 
   return (
     <>
+      <p className={styles.note}>Note: Sometimes it might take a while to generate the link</p>
       <form className={classNames({
         [styles.container]: true,
         [styles.form__error]: error,

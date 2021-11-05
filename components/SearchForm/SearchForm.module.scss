@@ -16,6 +16,12 @@
   border: 2px solid red;
 }
 
+.note {
+  color: var(--font-secondary-color);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
 .icon {
   color: var(--primary-color);
   font-size: 2rem;
