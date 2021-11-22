@@ -4,6 +4,7 @@ import styles from "./Home.module.scss";
 import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 import SearchForm from "../SearchForm/SearchForm";
 import ResultItem from "../ResultItem/ResultItem";
+import GithubLink from "../GithubLink/GithubLink";
 
 export default function Home() {
   return (
@@ -23,6 +24,9 @@ export default function Home() {
         </div>
         <ResultItem />
       </main>
+      <div className={styles.githubLink}>
+        <GithubLink />
+      </div>
     </div>
   );
 }
